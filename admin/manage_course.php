@@ -95,9 +95,10 @@ include_once "admin_header.php";
                                 'discount_price' => $_POST['discount_price'],
                                 'instructor' => $_POST['instructor'],
                                 'category_id' => $_POST['category_id'],
-                                // 'image' => $image,
-                                'description' => $_POST['description']
-                            ];
+                                'description' => $_POST['description'],
+                                'image' => $image                  
+             
+                        ];
                             if(insertData("courses",$data)){
                                 redirect("manage_course.php");
                             }
@@ -146,7 +147,7 @@ include_once "admin_header.php";
                             <td>Rs.<?=$value['discount_price'];?> <del><?=$value['price'];?></del></td>
                             <td><?=$value['instructor'];?></td>
                             <td>
-                                <!-- <img width="50" height="auto" src="images/<?=$value['image'];?>"> -->
+                                <img width="50" height="auto" src="images/<?=$value['image'];?>">
                             </td>
                             <td>
                                 <div class="btn-group">

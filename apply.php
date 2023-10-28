@@ -59,7 +59,7 @@ include_once "include/header.php";
                         </div>
 
                         <!-- Submit button -->
-                        <input type="submit" name="create" class="btn btn-primary btn-block w-100">Sign up</input>
+                        <input type="submit" name="create" value="Create New Account" class="btn btn-primary btn-block w-100">
 
                         <!-- Register buttons -->
                         <div class="text-center">

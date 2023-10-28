@@ -1,3 +1,10 @@
+<?php
+include_once "config.php";
+
+if(isset($_SESSION['student'])):
+    redirect("student/index.php");
+endif;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,20 +25,20 @@ include_once "include/header.php";
         <div class="col-4 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3>Login Here</h3>
+                    <h3>Student Login</h3>
                 </div>
                 <div class="card-body">
-            <form>
+            <form method="Post">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example1">Email address</label>
-                    <input type="email" id="form2Example1" class="form-control" />
+                    <input type="email" name="email"id="form2Example1" class="form-control" />
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example2">Password</label>
-                    <input type="password" id="form2Example2" class="form-control" />
+                    <input type="password" name="password" id="form2Example2" class="form-control" />
                 </div>
 
                 <!-- 2 column grid layout for inline styling -->
@@ -44,11 +51,11 @@ include_once "include/header.php";
                 </div>
 
                 <!-- Submit button -->
-                <a type="submit" class="btn btn-primary btn-block mb-4 w-100">Sign in</a>
+                <input type="submit" name="login" value="Sign In" class="btn btn-primary btn-block mb-4 w-100">
 
                 <!-- Register buttons -->
                     <div class="text-center">
-                        <p>Not a member? <a href="#!">Register</a></p>
+                        <p>Not a member? <a href="apply.php">Register</a></p>
                         <p>or sign up with:</p>
                         <button type="button" class="btn btn-secondary btn-floating mx-1">
                         <i class="bi bi-facebook"></i>
@@ -67,6 +74,23 @@ include_once "include/header.php";
                         </button>
                     </div>
             </form>
+
+            <?php
+                if(isset($_POST['login'])){
+                    $email = $_POST['email'];
+                    $password = md5($_POST['password']);
+                    $count = countRecords("students","email = '$email' AND password = '$password'" );
+
+                    if($count ==1 ){
+                        $_SESSION['student'] = $email;
+                        redirect("student/index.php");
+                    }
+                    else{
+                        alert("Invalid Email Or Password");
+                        redirect("login.php");
+                    }
+                }
+            ?>
                 </div>
             </div>
         </div>

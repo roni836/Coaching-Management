@@ -86,3 +86,17 @@ function checkAdmin(){
         redirect('login.php');
     }
 }
+
+function getUser(){
+    global $connect;
+    if(!isset($_SESSION['student'])){
+        redirect("login.php");
+    }
+    $email = $_SESSION['student'];
+
+    $user = callingData("students","email = '$email'");
+    return $user[0];
+}
+
+// 
+
