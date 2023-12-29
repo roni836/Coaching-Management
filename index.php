@@ -1,6 +1,9 @@
 <?php
 include_once "config.php";
+
+echo "testing";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,3 +93,5 @@ include_once "include/header.php";
     
 </body>
 </html>
+
+- Added echo "Hello"
