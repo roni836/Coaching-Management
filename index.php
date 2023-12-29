@@ -2,6 +2,7 @@
 include_once "config.php";
 
 echo "testing";
+echo "testing 2";
 ?>
 
 <!DOCTYPE html>
